@@ -24,4 +24,9 @@ class Modul extends Model
     {
         return $this->hasMany(Resultat_aprenentatge::class, 'moduls_id');
     }
+
+    public function usuaris()
+    {
+        return $this->belongsToMany(Usuari::class, 'usuaris_has_moduls', 'moduls_id', 'usuaris_id');
+    }
 }

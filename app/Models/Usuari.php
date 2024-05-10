@@ -19,4 +19,14 @@ class Usuari extends Model
     {
         return $this->belongsTo(Tipu_usuari::class, 'tipus_usuaris_id');
     }
+
+    public function moduls()
+    {
+        return $this->belongsToMany(Modul::class, 'usuaris_has_moduls', 'usuaris_id', 'moduls_id');
+    }
+
+    public function criteris_avaluacio()
+    {
+        return $this->belongsToMany(Criteri_avaluacio::class, 'alumnes_has_criteris_avaluacio', 'usuaris_id', 'criteris_id');
+    }
 }

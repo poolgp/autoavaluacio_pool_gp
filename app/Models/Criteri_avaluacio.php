@@ -24,4 +24,9 @@ class Criteri_avaluacio extends Model
     {
         return $this->hasMany(Criteri_avaluacio::class,'criteris_avaluacio_id');
     }
+
+    public function usuaris()
+    {
+        return $this->belongsToMany(Usuari::class, 'alumnes_has_criteris_avaluacio', 'criteris_id', 'usuaris_id');
+    }
 }
