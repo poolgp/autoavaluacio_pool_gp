@@ -22,6 +22,6 @@ class Modul extends Model
 
     public function resultats_aprenentatge()
     {
-        return $this->hasMany(Modul::class, 'cicles_id');
+        return $this->hasMany(Resultat_aprenentatge::class, 'moduls_id');
     }
 }
