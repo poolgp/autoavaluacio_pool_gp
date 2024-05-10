@@ -12,7 +12,9 @@ class UsuariController extends Controller
      */
     public function index()
     {
-        //
+        $usuaris = Usuari::all();
+
+        return view('usuaris.usuaris', compact('usuaris'));
     }
 
     /**
