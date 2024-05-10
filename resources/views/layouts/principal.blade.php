@@ -18,7 +18,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('autoavaluacio_pool_gp/public/img/logo-politecnics.png') }}"
                     alt="Politecnics Barcelona" width="auto" height="80px" class="d-inline-block align-text-top">
             </a>
@@ -43,7 +43,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ url('usuari') }}">
                                     Usuaris
                                 </a>
                             </li>
@@ -133,7 +133,10 @@
             </div>
         </div>
     </nav>
-    @yield('contenido')
+
+    <div class="container">
+        @yield('contenido')
+    </div>
 </body>
 
 </html>
