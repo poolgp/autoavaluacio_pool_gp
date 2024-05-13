@@ -11,8 +11,6 @@
 
     <link rel="shortcut icon" href="{{ Vite::asset('public/img/icono-politecnics.png') }}" type="image/x-icon">
 
-    <link rel="stylesheet" href="{{ Vite::asset('resource/css/newuser.css') }}">
-
     @vite(['resources/css/app.css', 'resources/css/app.scss', 'resources/js/app.js'])
 </head>
 

@@ -3,7 +3,7 @@
 @section('titulo', 'NEW USUARI')
 
 @section('contenido')
-    <div class="card my-3">
+    <div class="card my-4">
         <div class="card-header">
             <h3>Usuari Nou</h3>
         </div>
