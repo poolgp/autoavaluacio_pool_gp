@@ -10,9 +10,21 @@ class UsuariController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $usuaris = Usuari::all();
+        $actiu = $request->input('actiuBuscar');
+
+        if ($actiu == 'actiu') {
+            // $usuaris = Usuari::where('actiu', '=', true)
+            //     ->get();
+            $usuaris = Usuari::where('actiu', '=', true)
+                ->paginate(10);
+        } else {
+            // $usuaris = Usuari::all();
+            $usuaris = Usuari::paginate(10);
+        }
+
+        $request->session()->flashInput($request->input());
 
         return view('usuaris.usuaris', compact('usuaris'));
     }

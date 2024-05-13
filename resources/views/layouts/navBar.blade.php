@@ -1,13 +1,12 @@
 <nav class="navbar navbar-expand-lg bg-primary">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('autoavaluacio_pool_gp/public/img/logo-politecnics.png') }}"
-                alt="Politecnics Barcelona" width="auto" height="80px" class="d-inline-block align-text-top">
+            <img src="{{ Vite::asset('public/img/logo-politecnics.png') }}" alt="Politecnics Barcelona" width="auto"
+                height="80px" class="d-inline-block align-text-top">
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
