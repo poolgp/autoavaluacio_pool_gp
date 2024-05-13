@@ -18,10 +18,11 @@ class UsuariController extends Controller
             // $usuaris = Usuari::where('actiu', '=', true)
             //     ->get();
             $usuaris = Usuari::where('actiu', '=', true)
-                ->paginate(10);
+                ->paginate(5)
+                ->withQueryString();
         } else {
             // $usuaris = Usuari::all();
-            $usuaris = Usuari::paginate(10);
+            $usuaris = Usuari::paginate(5);
         }
 
         $request->session()->flashInput($request->input());
@@ -34,7 +35,7 @@ class UsuariController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuaris.newUser');
     }
 
     /**

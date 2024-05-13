@@ -3,7 +3,7 @@
 @section('titulo', 'USUARIS')
 
 @section('contenido')
-    <div class="card mt-1 mb-2">
+    <div class="card my-3">
         <div class="card-body">
             <h5 class="card-title">Buscar</h5>
             <form action="{{ action([App\Http\Controllers\UsuariController::class, 'index']) }}">
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <div class="card mt-1 mb-2">
+    <div class="card my-3">
         <div class="card-body">
             <h5 class="card-title">USUARIS</h5>
             <table class="table">
@@ -73,6 +73,20 @@
                                     </div>
                                 @endif
                             </td>
+                            <td>
+                                <form action="#" class="float-right ml-1">
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Esborrar
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
+                                <form action="#" class="float-right">
+                                    <button type="submit" class="btn btn-sm btn-secondary">
+                                        Editar
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -82,4 +96,10 @@
 
         </div>
     </div>
+
+    <a href="{{ url('usuari/create') }}" class="btn btn-primary btn-float-afegir">
+        Nou Usuari
+        <i class="fa-solid fa-plus"></i>
+    </a>
+
 @endsection
