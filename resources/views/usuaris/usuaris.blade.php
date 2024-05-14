@@ -74,14 +74,21 @@
                                 @endif
                             </td>
                             <td>
-                                <form action="#" class="float-right ml-1">
+                                <form
+                                    action="{{ action([App\Http\Controllers\UsuariController::class, 'destroy'], ['usuari' => $usuari->id]) }}"
+                                    method="POST" class="float-right ml-1">
+                                    @csrf
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">
                                         Esborrar
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>
-                                <form action="#" class="float-right">
-                                    <button type="submit" class="btn btn-sm btn-secondary">
+
+                                <form
+                                    action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuari' => $usuari->id]) }}"
+                                    class="float-right">
+                                    <button class="btn btn-sm btn-secondary">
                                         Editar
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>

@@ -43,7 +43,23 @@ class UsuariController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuari = new Usuari();
+
+        $usuari->nom = $request->input('nameUser');
+        $usuari->cognom = $request->input('cognomUser');
+        $usuari->nom_usuari = $request->input('acronimUser');
+        $usuari->correu = $request->input('emailUser');
+        $usuari->contrasenya = $request->input('passwUser');
+        $usuari->correu = $request->input('emailUser');
+
+        $tipoUsuari = $request->input('inlineRadioOptions');
+        $usuari->tipus_usuaris_id = $tipoUsuari;
+
+        $usuari->actiu = ($request->input('actiu') == 'actiu');
+
+        $usuari->save();
+
+        return redirect()->action([UsuariController::class, 'index']);
     }
 
     /**
@@ -59,7 +75,7 @@ class UsuariController extends Controller
      */
     public function edit(Usuari $usuari)
     {
-        //
+        return view('usuaris.editUser', compact('usuari'));
     }
 
     /**
@@ -67,7 +83,21 @@ class UsuariController extends Controller
      */
     public function update(Request $request, Usuari $usuari)
     {
-        //
+        $usuari->nom = $request->input('nameUser');
+        $usuari->cognom = $request->input('cognomUser');
+        $usuari->nom_usuari = $request->input('acronimUser');
+        $usuari->correu = $request->input('emailUser');
+        $usuari->contrasenya = $request->input('passwUser');
+        $usuari->correu = $request->input('emailUser');
+
+        $tipoUsuari = $request->input('inlineRadioOptions');
+        $usuari->tipus_usuaris_id = $tipoUsuari;
+
+        $usuari->actiu = ($request->input('actiu') == 'actiu');
+
+        $usuari->save();
+
+        return redirect()->action([UsuariController::class, 'index']);
     }
 
     /**
@@ -75,6 +105,8 @@ class UsuariController extends Controller
      */
     public function destroy(Usuari $usuari)
     {
-        //
+        $usuari->delete();
+
+        return redirect()->action([UsuariController::class, 'index']);
     }
 }

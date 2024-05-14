@@ -1,28 +1,29 @@
 @extends('layouts.principal')
 
-@section('titulo', 'NEW USUARI')
+@section('titulo', 'EDIT USUARI')
 
 @section('contenido')
     <div class="card my-4">
         <div class="card-header">
-            <h3>Usuari Nou</h3>
+            <h3>Editar Usuari</h3>
         </div>
         <div class="card-body">
-            <form action="{{ action([App\Http\Controllers\UsuariController::class, 'store']) }}" method="POST">
+            <form action="{{ action([App\Http\Controllers\UsuariController::class, 'update'], ['usuari' => $usuari->id]) }}"
+                method="POST">
                 @csrf
-
+                @method('PUT')
                 <div class="row my-3">
                     <div class="col">
-                        <input type="text" class="form-control" name="nameUser" id="nameUser"
+                        <input type="text" class="form-control" name="nameUser" id="nameUser" value="{{ $usuari->nom }}"
                             placeholder="Nom - Ex: Francisco" autofocus>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" name="cognomUser" id="cognomUser"
-                            placeholder="Cognom - Ex: Fernández">
+                            value="{{ $usuari->cognom }}" placeholder="Cognom - Ex: Fernández">
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" name="acronimUser" id="acronimUser"
-                            placeholder="Acronim - Ex: ffernandez">
+                            value="{{ $usuari->nom_usuari }}" placeholder="Acronim - Ex: ffernandez">
                     </div>
                 </div>
 
@@ -30,39 +31,41 @@
                     <label for="emailUser" class="col-sm-2 col-form-label">Email: </label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" name="emailUser" id="emailUser"
-                            placeholder="ffernandez@politecnics.barcelona">
+                            value="{{ $usuari->correu }}" placeholder="ffernandez@politecnics.barcelona">
                     </div>
                 </div>
 
                 <div class="row my-3">
                     <label for="passwUser" class="col-sm-2 col-form-label">Contrasenya: </label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="passwUser" id="passwUser">
+                        <input type="password" class="form-control" name="passwUser" id="passwUser"
+                            value="{{ $usuari->contrasenya }}">
                     </div>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="1">
+                        value="1" {{ $usuari->tipus_usuaris_id == 1 ? 'checked' : '' }}>
                     <label class="form-check-label" for="inlineRadio1">Administrador</label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="2" checked>
+                        value="2" {{ $usuari->tipus_usuaris_id == 2 ? 'checked' : '' }}>
                     <label class="form-check-label" for="inlineRadio2">Professor</label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                        value="3">
+                        value="3" {{ $usuari->tipus_usuaris_id == 3 ? 'checked' : '' }}>
                     <label class="form-check-label" for="inlineRadio3">Alumne</label>
                 </div>
 
                 <div class="row my-3">
                     <div class="col">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="actiu" id="actiu" value="actiu">
+                            <input class="form-check-input" type="checkbox" name="actiu" id="actiu" value="actiu"
+                                {{ $usuari->actiu ? 'checked' : '' }}>
                             <label class="form-check-label" for="actiu">
                                 Actiu
                             </label>
