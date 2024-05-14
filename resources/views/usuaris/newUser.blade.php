@@ -14,15 +14,15 @@
                 <div class="row my-3">
                     <div class="col">
                         <input type="text" class="form-control" name="nameUser" id="nameUser"
-                            placeholder="Nom - Ex: Francisco" autofocus>
+                            placeholder="Nom - Ex: Francisco" autofocus value="{{ old('nameUser') }}">
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" name="cognomUser" id="cognomUser"
-                            placeholder="Cognom - Ex: Fernández">
+                            placeholder="Cognom - Ex: Fernández" value="{{ old('cognomUser') }}">
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" name="acronimUser" id="acronimUser"
-                            placeholder="Acronim - Ex: ffernandez">
+                            placeholder="Acronim - Ex: ffernandez" value="{{ old('acronimUser') }}">
                     </div>
                 </div>
 
@@ -30,14 +30,15 @@
                     <label for="emailUser" class="col-sm-2 col-form-label">Email: </label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" name="emailUser" id="emailUser"
-                            placeholder="ffernandez@politecnics.barcelona">
+                            placeholder="ffernandez@politecnics.barcelona" value="{{ old('emailUser') }}">
                     </div>
                 </div>
 
                 <div class="row my-3">
                     <label for="passwUser" class="col-sm-2 col-form-label">Contrasenya: </label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" name="passwUser" id="passwUser">
+                        <input type="password" class="form-control" name="passwUser" id="passwUser"
+                            value="{{ old('passwUser') }}">
                     </div>
                 </div>
 

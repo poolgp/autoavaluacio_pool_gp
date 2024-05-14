@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Clases\Utilitat;
 use App\Models\Usuari;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class UsuariController extends Controller
@@ -57,9 +59,16 @@ class UsuariController extends Controller
 
         $usuari->actiu = ($request->input('actiu') == 'actiu');
 
-        $usuari->save();
+        try {
+            $usuari->save();
+            $response = redirect()->action([UsuariController::class, 'index']);
+        } catch (QueryException $ex) {
+            $mensaje = Utilitat::errorMessage($ex);
+            $request->session()->flash('error', $mensaje);
+            $response = redirect()->action([UsuariController::class, 'create'])->withInput();
+        }
 
-        return redirect()->action([UsuariController::class, 'index']);
+        return $response;
     }
 
     /**
