@@ -2,6 +2,12 @@
 
 @section('titulo', 'NEW USUARI')
 
+
+
+{{-- 
+    PREGUNTAR FRANCISCO OLD LINIA 26
+    --}}
+
 @section('contenido')
     <div class="card my-4">
         <div class="card-header">

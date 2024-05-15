@@ -51,7 +51,7 @@ class UsuariController extends Controller
         $usuari->cognom = $request->input('cognomUser');
         $usuari->nom_usuari = $request->input('acronimUser');
         $usuari->correu = $request->input('emailUser');
-        $usuari->contrasenya = $request->input('passwUser');
+        $usuari->contrasenya = \bcrypt($request->input('passwUser'));
         $usuari->correu = $request->input('emailUser');
 
         $tipoUsuari = $request->input('inlineRadioOptions');
