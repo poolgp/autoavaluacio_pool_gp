@@ -87,9 +87,20 @@
 
                                 <form
                                     action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuari' => $usuari->id]) }}"
-                                    class="float-right">
+                                    method="GET" class="float-right">
+
                                     <button class="btn btn-sm btn-secondary">
                                         Editar
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </form>
+
+                                <form
+                                    action="{{ action([App\Http\Controllers\UsuariController::class, 'edit'], ['usuari' => $usuari->id, 'tipoDeModificacion' => 'cambioDeContrasenia']) }}"
+                                    method="POST" class="float-right">
+                                    @method('GET')
+                                    <button class="btn btn-sm btn-secondary">
+                                        Editar Contrasenya
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </button>
                                 </form>

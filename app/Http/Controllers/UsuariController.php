@@ -82,9 +82,15 @@ class UsuariController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuari $usuari)
+    public function edit(Request $request, Usuari $usuari)
     {
-        return view('usuaris.editUser', compact('usuari'));
+        $tipoDeModificacion = $request->tipoDeModificacion;
+        if ($tipoDeModificacion === "cambioDeContrasenia") {
+            return view('usuaris.editPassw', compact('usuari'));
+        } else {
+            return view('usuaris.editUser', compact('usuari'));
+        }
+        // return view('usuaris.editPassw', compact('usuari'));
     }
 
     /**
