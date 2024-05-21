@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    @include('layouts.navBAr')
+    @include('layouts.navBar')
 
     <div class="container">
         @yield('contenido')
