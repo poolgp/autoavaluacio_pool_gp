@@ -19,7 +19,7 @@ use App\Http\Controllers\UsuariController;
 // });
 
 Route::get('/', function () {
-    return view('home');
+    return view('login');
 });
 
 
