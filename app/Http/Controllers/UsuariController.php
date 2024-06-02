@@ -12,7 +12,7 @@ class UsuariController extends Controller
 
     public function showLogin()
     {
-        return view('auth.loginForm');
+        return view('auth.login');
     }
 
     public function login(Request $request)

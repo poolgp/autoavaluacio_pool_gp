@@ -1,7 +1,7 @@
-@extends('layouts.loginP')
+@extends('layouts.principal')
 
 @section('titulo', 'LOGIN')
 
 @section('contenido')
-    @include('auth.loginForm')
+    @include('auth.login')
 @endsection
