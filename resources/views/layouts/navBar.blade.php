@@ -116,9 +116,27 @@
                     </li>
                 @endif
             </ul>
-            <span class="navbar-text">
-                POL GARCIA
-            </span>
+
+            <form action="#">
+                <ul class="navbar-nav">
+                    @if (Auth::check())
+                        <li class="nav-link dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                {{ Auth::user()->nom }} {{ Auth::user()->cognom }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item " href="{{ url('/logout') }}"> <i class="fa fa-sign-out"
+                                        aria-hidden="true"></i> Logout </a>
+                            </div>
+                        </li>
+                    @else
+                        <li class="nav-item botonLogin text-white">
+                            <a class="btn btn-primary botonLogin text-white" href="{{ url('/') }}">Login</a>
+                        </li>
+                    @endif
+                </ul>
+            </form>
         </div>
     </div>
 </nav>
