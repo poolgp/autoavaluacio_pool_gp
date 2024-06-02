@@ -3,5 +3,5 @@
 @section('titulo', 'HOME')
 
 @section('contenido')
-    {{$user->rol->nombre}}
+    {{$user->tipus_usuaris->tipus}}
 @endsection

@@ -9,9 +9,34 @@ use Illuminate\Http\Request;
 
 class UsuariController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function showLogin()
+    {
+        return view('auth.loginForm');
+    }
+
+    public function login(Request $request)
+    {
+        $nom_usuari = $request->input('nom_usuari');
+        $contrasenya = $request->input('contrasenya');
+
+        $user = Usuari::where('nom_usuari', $nom_usuari)->first();
+
+        if ($user != null && Hash::check($contrasenya, $user->contrasenya)) {
+            Auth::login($user);
+            $response = redirect('/home');
+        } else {
+            $request->session()->flash('error', 'Usuari o contrasenya incorrectes');
+            $response = redirect('/loginForm')->withInput();
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
     public function index(Request $request)
     {
         $actiu = $request->input('actiuBuscar');
