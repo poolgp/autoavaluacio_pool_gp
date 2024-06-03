@@ -145,8 +145,15 @@ class UsuariController extends Controller
      */
     public function destroy(Usuari $usuari)
     {
-        $usuari->delete();
+        try {
+            $usuari->delete();
+            return redirect()->action([UsuariController::class, 'index'])->with('success', 'Usuario eliminado exitosamente.');
+        } catch (QueryException $e) {
+            $usuari->actiu = 2;
+            $usuari->save();
 
-        return redirect()->action([UsuariController::class, 'index']);
+            $mensaje = Utilitat::errorMessage($e);
+            return redirect()->action([UsuariController::class, 'index'])->with('success', 'No se puede eliminar, tiene datos relacionados, se pasa a INACTIVO');
+        }
     }
 }
