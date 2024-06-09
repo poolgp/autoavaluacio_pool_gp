@@ -10,7 +10,7 @@ class Criteri_avaluacio extends Model
     use HasFactory;
 
     protected $table = 'cicles';
-    // protected $primaryKey = 'id';
+    protected $primaryKey = 'id';
     // public $incrementing = false;
     // protected $keyType = 'string';
     public $timestamps = false;
@@ -22,7 +22,7 @@ class Criteri_avaluacio extends Model
 
     public function rubriques()
     {
-        return $this->hasMany(Criteri_avaluacio::class,'criteris_avaluacio_id');
+        return $this->hasMany(Criteri_avaluacio::class, 'criteris_avaluacio_id');
     }
 
     public function usuaris()

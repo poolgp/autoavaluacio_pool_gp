@@ -13,7 +13,7 @@ class Usuari extends Authenticatable
     use HasFactory, HasApiTokens, Notifiable;
 
     protected $table = 'usuaris';
-    // protected $primaryKey = 'id';
+    protected $primaryKey = 'id';
     // public $incrementing = false;
     // protected $keyType = 'string';
     public $timestamps = false;
