@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tipu_usuari extends Model
 {
@@ -15,7 +16,7 @@ class Tipu_usuari extends Model
     // protected $keyType = 'string';
     public $timestamps = false;
 
-    public function usuaris()
+    public function usuaris(): HasMany
     {
         return $this->hasMany(Usuari::class, 'tipus_usuaris_id');
     }

@@ -1,6 +1,8 @@
 @extends('layouts.principal')
 
 @section('contenido')
+    @include('partials.mensajes')
+
     <div class="acciones d-flex justify-content-evenly">
         <div class="card my-3 col-md-5">
             <div class="card-body">

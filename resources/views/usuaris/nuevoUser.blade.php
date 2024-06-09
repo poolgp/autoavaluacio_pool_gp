@@ -1,6 +1,8 @@
 @extends('layouts.principal')
 
 @section('contenido')
+    @include('partials.mensajes')
+
     <div class="card my-4">
         <div class="card-header">
             <h4 class="card-title">Nuevo Usuario</h4>
@@ -11,15 +13,15 @@
                 <div class="form-group row mt-2 mb-3">
                     <div class="col">
                         <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom"
-                            aria-label="Nom" autofocus>
+                            aria-label="Nom" value="{{ old('nom') }}" autofocus>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" id="cognom" name="cognom" placeholder="Cognom"
-                            aria-label="Cognom">
+                            aria-label="Cognom" value="{{ old('cognom') }}">
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" id="nom_usuari" name="nom_usuari"
-                            placeholder="Nom Usuari" aria-label="Nom Usuari">
+                            placeholder="Nom Usuari" aria-label="Nom Usuari" value="{{ old('nom_usuari') }}">
                     </div>
                 </div>
 
@@ -29,7 +31,8 @@
                         <div class="input-group-text">
                             <i class="fa-solid fa-at"></i>
                         </div>
-                        <input type="email" class="form-control" id="correu" name="correu" placeholder="Correo">
+                        <input type="email" class="form-control" id="correu" name="correu" placeholder="Correo"
+                            value="{{ old('correu') }} ">
                     </div>
                 </div>
 
@@ -40,7 +43,7 @@
                             <i class="fa-solid fa-lock"></i>
                         </div>
                         <input type="password" class="form-control" id="contrasenya" name="contrasenya"
-                            placeholder="Contraseña">
+                            placeholder="Contraseña" value="{{ old('contrasenya') }}">
                     </div>
                 </div>
 

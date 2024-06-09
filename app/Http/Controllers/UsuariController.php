@@ -2,11 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Clases\Utilitat;
 use App\Models\Usuari;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsuariController extends Controller
 {
+    public function showLogin()
+    {
+        return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $nom_usuari = $request->input('nom_usuari');
+        $contrasenya = $request->input('contrasenya');
+
+        $user = Usuari::where('nom_usuari', $nom_usuari)->first();
+
+        if ($user != null && Hash::check($contrasenya, $user->contrasenya)) {
+            Auth::login($user);
+            $response = redirect('/home');
+        } else {
+            $request->session()->flash('error', 'Usuario o contraseña incorrectos');
+            $response = redirect('/login')->withInput();
+        }
+        return $response;
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
     public function index(Request $request)
     {
         $actiu = $request->input('actiuBuscar');
@@ -41,14 +73,19 @@ class UsuariController extends Controller
         $usuari->contrasenya = $contrasenya;
         $usuari->tipus_usuaris_id = $request->input('tipus_usuaris_id');
         $usuari->actiu = $request->input('actiu');
-        $usuari->save();
 
-        return redirect()->action([UsuariController::class, 'index']);
+        try {
+            $usuari->save();
+            $request->session()->flash('mensaje', 'Usuario creado correctamente.');
+            $response = redirect()->action([UsuariController::class, 'index']);
+        } catch (QueryException $ex) {
+            $mensaje = Utilitat::errorMessage($ex);
+            $request->session()->flash('error', $mensaje);
+            $response = redirect()->action([UsuariController::class, 'create'])->withInput();
+        }
+        return $response;
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Usuari $usuari)
     {
         //
@@ -64,9 +101,6 @@ class UsuariController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Usuari $usuari)
     {
         $usuari->nom = $request->input('nom');
@@ -77,15 +111,31 @@ class UsuariController extends Controller
         $usuari->contrasenya = $contrasenya;
         $usuari->tipus_usuaris_id = $request->input('tipus_usuaris_id');
         $usuari->actiu = $request->input('actiu');
-        $usuari->save();
 
-        return redirect()->action([UsuariController::class, 'index']);
+        try {
+            $usuari->save();
+            $request->session()->flash('mensaje', 'Usuario actualizado correctamente.');
+            $response = redirect()->action([UsuariController::class, 'index']);
+        } catch (QueryException $ex) {
+            $mensaje = Utilitat::errorMessage($ex);
+            $request->session()->flash('error', $mensaje);
+            $response = redirect()->action([UsuariController::class, 'edit'], ['usuari' => $usuari->id])->withInput();
+        }
+        return $response;
     }
 
-    public function destroy(Usuari $usuari)
+    public function destroy(Request $request, Usuari $usuari)
     {
-        $usuari->delete();
+        try {
+            $usuari->delete();
+            $request->session()->flash('mensaje', 'Usuario eliminado correctamente.');
+        } catch (QueryException $ex) {
+            $usuari->actiu = 0;
+            $usuari->save();
 
+            $mensaje = Utilitat::errorMessage($ex);
+            $request->session()->flash('error', $mensaje);
+        }
         return redirect()->action([UsuariController::class, 'index']);
     }
 }

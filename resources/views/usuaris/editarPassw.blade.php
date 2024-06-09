@@ -1,6 +1,8 @@
 @extends('layouts.principal')
 
 @section('contenido')
+    @include('partials.mensajes')
+
     <div class="card my-4">
         <div class="card-header">
             <h4 class="card-title">Nuevo Usuario</h4>
@@ -13,15 +15,15 @@
                 <div class="form-group row mt-2 mb-3">
                     <div class="col">
                         <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom"
-                            aria-label="Nom" autofocus value="{{ $usuari->nom }}" disabled>
+                            aria-label="Nom" autofocus value="{{ $usuari->nom }}" disabled {{ old('nom') }}>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" id="cognom" name="cognom" placeholder="Cognom"
-                            aria-label="Cognom" value="{{ $usuari->cognom }}" disabled>
+                            aria-label="Cognom" value="{{ $usuari->cognom }}" disabled {{ old('cognom') }}>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control" id="nom_usuari" name="nom_usuari"
-                            placeholder="Nom Usuari" aria-label="Nom Usuari" value="{{ $usuari->nom_usuari }}" disabled>
+                            placeholder="Nom Usuari" aria-label="Nom Usuari" value="{{ $usuari->nom_usuari }}" disabled {{old('nom_usuari')}}>
                     </div>
                 </div>
 
@@ -32,7 +34,7 @@
                             <i class="fa-solid fa-at"></i>
                         </div>
                         <input type="email" class="form-control" id="correu" name="correu" placeholder="Correo"
-                            value="{{ $usuari->correu }}" disabled>
+                            value="{{ $usuari->correu }}" disabled {{old('correu')}}>
                     </div>
                 </div>
 
@@ -43,7 +45,7 @@
                             <i class="fa-solid fa-lock"></i>
                         </div>
                         <input type="password" class="form-control" id="contrasenya" name="contrasenya"
-                            placeholder="Contraseña" value="{{ $usuari->contrasenya }}">
+                            placeholder="Contraseña" value="{{ $usuari->contrasenya }}" {{old('contrasenya')}}>
                     </div>
                 </div>
 
@@ -53,7 +55,8 @@
                         disabled>
                         <option value="3" {{ $usuari->tipus_usuaris_id == 3 ? 'selected' : '' }}>Alumno</option>
                         <option value="2" {{ $usuari->tipus_usuaris_id == 2 ? 'selected' : '' }}>Profesor</option>
-                        <option value="1" {{ $usuari->tipus_usuaris_id == 1 ? 'selected' : '' }}>Administrador</option>
+                        <option value="1" {{ $usuari->tipus_usuaris_id == 1 ? 'selected' : '' }}>Administrador
+                        </option>
                     </select>
                 </div>
 

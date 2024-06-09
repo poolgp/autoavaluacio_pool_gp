@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Usuari;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ class Usuari extends Authenticatable
     // protected $keyType = 'string';
     public $timestamps = false;
 
-    public function tipus_usuaris()
+    public function tipus_usuaris(): BelongsTo
     {
         return $this->belongsTo(Tipu_usuari::class, 'tipus_usuaris_id');
     }
