@@ -22,7 +22,7 @@ class Criteri_avaluacio extends Model
 
     public function rubriques()
     {
-        return $this->hasMany(Criteri_avaluacio::class, 'criteris_avaluacio_id');
+        return $this->hasMany(Rubrica::class, 'criteris_avaluacio_id');
     }
 
     public function usuaris()

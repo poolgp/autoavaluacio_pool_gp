@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Resultat_aprenentatge;
+use App\Models\Criteri_avaluacio;
 use Illuminate\Http\Request;
 
-class ResultatAprenentatgeController extends Controller
+class CriteriAvaluacioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $resultats = Resultat_aprenentatge::all();
-        return ResultatAprenentatgeResource::collection($resultats);
+        //
     }
 
     /**
@@ -28,7 +27,7 @@ class ResultatAprenentatgeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Resultat_aprenentatge $resultat_aprenentatge)
+    public function show(Criteri_avaluacio $criteri_avaluacio)
     {
         //
     }
@@ -36,7 +35,7 @@ class ResultatAprenentatgeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Resultat_aprenentatge $resultat_aprenentatge)
+    public function update(Request $request, Criteri_avaluacio $criteri_avaluacio)
     {
         //
     }
@@ -44,7 +43,7 @@ class ResultatAprenentatgeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Resultat_aprenentatge $resultat_aprenentatge)
+    public function destroy(Criteri_avaluacio $criteri_avaluacio)
     {
         //
     }
