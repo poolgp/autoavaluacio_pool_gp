@@ -9,7 +9,7 @@ class Resultat_aprenentatge extends Model
 {
     use HasFactory;
 
-    protected $table = 'cicles';
+    protected $table = 'resultats_aprenentatge';
     protected $primaryKey = 'id';
     // public $incrementing = false;
     // protected $keyType = 'string';

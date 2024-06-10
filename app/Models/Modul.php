@@ -9,7 +9,7 @@ class Modul extends Model
 {
     use HasFactory;
 
-    protected $table = 'cicles';
+    protected $table = 'moduls';
     protected $primaryKey = 'id';
     // public $incrementing = false;
     // protected $keyType = 'string';

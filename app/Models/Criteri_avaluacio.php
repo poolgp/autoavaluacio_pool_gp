@@ -9,7 +9,7 @@ class Criteri_avaluacio extends Model
 {
     use HasFactory;
 
-    protected $table = 'cicles';
+    protected $table = 'criteris_avaluacio';
     protected $primaryKey = 'id';
     // public $incrementing = false;
     // protected $keyType = 'string';

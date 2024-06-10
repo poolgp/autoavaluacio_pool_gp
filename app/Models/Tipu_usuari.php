@@ -10,7 +10,7 @@ class Tipu_usuari extends Model
 {
     use HasFactory;
 
-    protected $table = 'cicles';
+    protected $table = 'tipus_usuaris';
     protected $primaryKey = 'id';
     // public $incrementing = false;
     // protected $keyType = 'string';

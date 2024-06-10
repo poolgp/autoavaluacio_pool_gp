@@ -9,7 +9,7 @@ class Rubrica extends Model
 {
     use HasFactory;
 
-    protected $table = 'cicles';
+    protected $table = 'rubriques';
     protected $primaryKey = 'id';
     // public $incrementing = false;
     // protected $keyType = 'string';
