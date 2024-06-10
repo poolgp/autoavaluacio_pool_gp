@@ -17,8 +17,8 @@
                         <div class="input-group-text">
                             <i class="fa-solid fa-at"></i>
                         </div>
-                        <input type="text" class="form-control" id="username" name="username"
-                            placeholder="Nombre de Usuario" autofocus value="{{ old('username') }}">
+                        <input type="text" class="form-control" id="nom_usuari" name="nom_usuari"
+                            placeholder="Nombre de Usuario" autofocus value="{{ old('nom_usuari') }}">
                     </div>
                 </div>
 
