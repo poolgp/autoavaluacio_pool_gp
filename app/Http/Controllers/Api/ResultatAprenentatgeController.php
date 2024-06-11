@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Resultat_aprenentatge;
-use Illuminate\Http\Request;
+use App\Http\Resources\ResultatAprenentatgeResource;
 
 class ResultatAprenentatgeController extends Controller
 {

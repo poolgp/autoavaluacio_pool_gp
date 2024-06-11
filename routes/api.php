@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuariController;
+use App\Http\Controllers\Api\ResultatAprenentatgeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('usuari', UsuariController::class);
+Route::apiResource('usuari', ResultatAprenentatgeController::class);
