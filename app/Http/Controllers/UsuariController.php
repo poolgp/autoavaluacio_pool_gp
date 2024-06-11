@@ -133,8 +133,9 @@ class UsuariController extends Controller
             $usuari->actiu = 0;
             $usuari->save();
 
-            $mensaje = Utilitat::errorMessage($ex);
-            $request->session()->flash('error', $mensaje);
+            $request->session()->flash('error', 'Usuario desactivado');
+            // $mensaje = Utilitat::errorMessage($ex);
+            // $request->session()->flash('error', $mensaje);
         }
         return redirect()->action([UsuariController::class, 'index']);
     }
